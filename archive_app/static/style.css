@@ -1,0 +1,174 @@
+/* 毕业生档案转递系统 —— 白 / 深灰 / 校园蓝 */
+:root {
+  --blue: #1b5ec4;
+  --blue-dark: #144a9e;
+  --blue-soft: #e8f0fd;
+  --ink: #2b2f36;
+  --gray: #6b7280;
+  --line: #dfe5ee;
+  --bg: #ffffff;
+  --panel: #f6f8fb;
+  --red: #c0392b;
+  --green: #1e7e4d;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 14px/1.6 "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+}
+header {
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 28px; background: var(--blue); color: #fff;
+}
+header .brand { font-size: 17px; font-weight: 600; letter-spacing: 1px; }
+header .logo {
+  display: inline-block; background: #fff; color: var(--blue);
+  border-radius: 6px; padding: 1px 8px; margin-right: 8px; font-weight: 700;
+}
+header nav a { color: #dbe7fb; text-decoration: none; font-size: 13px; }
+header .who { margin-left: auto; font-size: 13px; display: flex; gap: 8px; align-items: center; }
+header .role { background: rgba(255,255,255,.18); border-radius: 4px; padding: 1px 8px; }
+main { max-width: 1080px; margin: 22px auto; padding: 0 20px; }
+footer { text-align: center; color: var(--gray); font-size: 12px; padding: 26px 0 40px; }
+
+.card {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 10px;
+  padding: 18px 22px; margin-bottom: 18px;
+}
+.card h3 { margin: 0 0 12px; font-size: 15px; color: var(--blue-dark); }
+.card h4 { margin: 14px 0 6px; font-size: 13px; color: var(--ink); }
+.muted { color: var(--gray); }
+.small { font-size: 12px; }
+.nowrap { white-space: nowrap; }
+
+/* 登录 */
+.login { max-width: 420px; margin: 60px auto; text-align: center; }
+.login h1 { font-size: 22px; color: var(--blue-dark); }
+.login select, .login button { width: 100%; margin-top: 10px; }
+
+/* 表单 */
+label { display: block; font-size: 13px; color: var(--gray); margin: 8px 0 2px; }
+input, select, textarea {
+  width: 100%; padding: 7px 10px; border: 1px solid var(--line);
+  border-radius: 6px; font: inherit; color: var(--ink); background: #fff;
+}
+input:focus, select:focus, textarea:focus { outline: 2px solid var(--blue-soft); border-color: var(--blue); }
+button {
+  padding: 8px 18px; border-radius: 6px; border: 1px solid var(--blue);
+  background: #fff; color: var(--blue); cursor: pointer; font: inherit; font-size: 13px;
+}
+button.primary { background: var(--blue); color: #fff; }
+button.primary:hover { background: var(--blue-dark); }
+button.danger { border-color: var(--red); color: var(--red); }
+button.warn { border-color: #b9770e; color: #b9770e; }
+button.sm { padding: 3px 10px; font-size: 12px; }
+button.link { border: none; color: #dbe7fb; background: none; padding: 0; text-decoration: underline; }
+form.inline { display: inline-flex; gap: 6px; align-items: center; margin: 4px 6px 4px 0; }
+form.inline input { width: auto; padding: 5px 8px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 18px; }
+.grid2 .span2 { grid-column: span 2; }
+.grid2 button { justify-self: start; }
+.editbox { margin: 8px 0; border: 1px dashed var(--line); border-radius: 8px; padding: 8px 14px; }
+.editbox summary { cursor: pointer; color: var(--blue); font-size: 13px; }
+.actions { margin: 12px 0 4px; display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
+
+/* 学生端：接收单位与当前节点突出 */
+.order-head { display: flex; justify-content: space-between; gap: 16px; }
+.recv-unit { font-size: 21px; font-weight: 700; color: var(--blue-dark); margin: 4px 0 2px; }
+.head-side { text-align: right; }
+.seal { margin-top: 8px; font-size: 13px; color: var(--gray); }
+.seal b { color: var(--ink); font-family: ui-monospace, monospace; }
+.idcard { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; }
+
+/* 步骤条 */
+.stepper { display: flex; align-items: flex-start; margin: 18px 0 8px; }
+.step { text-align: center; width: 108px; flex: none; }
+.step .dot {
+  width: 30px; height: 30px; border-radius: 50%; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600;
+  background: #eef1f6; color: var(--gray); border: 2px solid var(--line);
+}
+.step .sname { font-size: 12.5px; margin-top: 5px; color: var(--gray); }
+.step .shint { font-size: 11px; color: var(--blue); margin-top: 2px; }
+.step.done .dot { background: var(--blue); border-color: var(--blue); color: #fff; }
+.step.done .sname { color: var(--ink); }
+.step.cur .dot {
+  background: #fff; border-color: var(--blue); color: var(--blue);
+  box-shadow: 0 0 0 4px var(--blue-soft);
+}
+.step.cur .sname { color: var(--blue-dark); font-weight: 700; }
+.bar { flex: 1; height: 2px; background: var(--line); margin-top: 15px; }
+.bar.done { background: var(--blue); }
+
+/* 徽标 */
+.badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; }
+.st-blue { background: var(--blue-soft); color: var(--blue-dark); }
+.st-gray { background: #eef1f6; color: var(--gray); }
+.st-dark { background: var(--ink); color: #fff; }
+.st-red { background: #fdecea; color: var(--red); }
+.st-green { background: #e6f4ec; color: var(--green); }
+
+/* 提示 */
+.flash { padding: 10px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 13px;
+  background: var(--blue-soft); color: var(--blue-dark); border: 1px solid #c7dbfa; }
+.flash.err { background: #fdecea; color: var(--red); border-color: #f5c6c0; }
+.alert { background: #fdecea; border: 1px solid #f5c6c0; color: var(--red);
+  border-radius: 8px; padding: 8px 12px; margin: 8px 0; font-size: 13px; }
+.notice { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 8px 12px; margin: 8px 0; font-size: 13px; color: var(--gray); }
+
+/* 时间线 */
+.timeline { list-style: none; margin: 6px 0; padding: 0 0 0 4px; font-size: 13px; }
+.timeline li { padding: 3px 0 3px 14px; border-left: 2px solid var(--line); }
+.timeline .ts { color: var(--gray); font-size: 12px; font-family: ui-monospace, monospace; }
+
+/* 密集表格（档案室封签号列表） */
+table.dense { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+table.dense th {
+  text-align: left; color: var(--gray); font-weight: 500;
+  border-bottom: 2px solid var(--line); padding: 4px 8px; white-space: nowrap;
+}
+table.dense td { border-bottom: 1px solid var(--line); padding: 4px 8px; vertical-align: top; }
+table.dense tr:nth-child(even) td { background: var(--panel); }
+table.seals .seal-cell { font-family: ui-monospace, monospace; font-weight: 600;
+  color: var(--blue-dark); white-space: nowrap; }
+.dot-red { display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--red); margin-left: 4px; }
+
+/* 运单链：退件链与原运单并排 */
+.wb-chain { display: flex; align-items: stretch; gap: 0; overflow-x: auto; padding: 6px 0; }
+.wb { min-width: 260px; max-width: 300px; border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px 14px; background: #fff; flex: none; }
+.wb.active { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-soft); }
+.wb.returned { border: 1.5px dashed var(--gray); background: var(--panel); }
+.wb.returning { border: 1.5px dashed var(--red); }
+.wb.delivered { border-color: var(--green); }
+.wb-tag { font-size: 11px; color: var(--gray); }
+.wb-no { font-family: ui-monospace, monospace; font-weight: 700; color: var(--ink); }
+.wb-arrow { align-self: center; padding: 0 10px; color: var(--red); font-size: 12px;
+  text-align: center; flex: none; }
+
+/* 异常 */
+.card.exc { border-color: #f5c6c0; }
+.exclist { margin: 0; padding-left: 18px; font-size: 13px; }
+.exclist li { margin: 5px 0; }
+.exc-panel { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin: 8px 0; }
+.exc-ops { margin-top: 8px; }
+
+/* 封装清单 */
+.packing { background: var(--panel); }
+.pack-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 24px; font-size: 13px; }
+.seal-big { font-family: ui-monospace, monospace; font-size: 20px; font-weight: 700;
+  color: var(--blue-dark); }
+ul.tight { margin: 2px 0; padding-left: 18px; }
+
+/* 敏感字段遮挡 */
+.sens .vm, .sens .vr { font-family: ui-monospace, monospace; }
+.sens .rv { padding: 0 6px; font-size: 11px; border: none; background: none;
+  color: var(--blue); text-decoration: underline; }
+pre.material { background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px; white-space: pre-wrap; font-size: 13px; }
+
+.toolbar { display: flex; align-items: center; gap: 14px; }
+a { color: var(--blue); }
