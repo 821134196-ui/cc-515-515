@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>毕业生档案转递系统</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="logo">档<span>案</span>转递 · 2025届毕业生</div>
+  <div class="spacer"></div>
+  <label class="login-hint" for="userSel" style="margin:0;color:#b9c3d0">切换身份</label>
+  <select id="userSel" style="width:230px"></select>
+  <span class="role-badge" id="roleBadge"></span>
+  <button class="ghost sm" id="refreshBtn" style="border-color:#7db4ea;color:#7db4ea">刷新</button>
+</header>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast"></div>
+<div class="dialog" id="dialog"><div class="box" id="dialogBox"></div></div>
+<script src="/app.js"></script>
+</body>
+</html>
